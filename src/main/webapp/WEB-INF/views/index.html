@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.254em;
+            margin: 0;
+            padding:0px;
+        }
+
+        #container-handle {
+            position: relative;
+            padding-left: 0px;
+            left: 15px;
+            width: 100%;
+        }
+        #menu-flex ul {
+            background: #8AD385;
+            width: 20%;
+            padding: 0;
+            list-style-type: none;
+            text-align: left;
+            float: left;
+        }
+
+        #menu-flex li {
+            width: auto;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 1em;
+        }
+
+        #menu-flex li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+        }
+        #menu-flex li:hover {
+            background: #CDE2CD;
+        }
+
+        p {
+            width: auto;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 30px;
+            font-size: 30px;
+            font-family: "Times New Roman";
+            color: #1e20ff;
+
+        }
+
+
+        #image-container {
+            position: absolute;
+            top: 10px;
+            left: 250px;
+            margin: 10px;
+            padding: 10px;
+            float: left;
+
+        }
+
+        .image-1 {
+            float: left;
+            width: 25%;
+            padding: 35px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 p-3"style="left: 1px">
+            <img th:src="@{https://images.idgesg.net/images/article/2018/07/apple-6-color-logo-100763179-large.jpg}" height="150px">
+        </div>
+
+        <div class="col-md-9 p-3" >
+            <img th:src="@{https://dienthoaiusa.com/wp-content/uploads/2018/08/dienthoaiusa.png}" height="200px" width="1068px">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <div class="collapse navbar-collapse">
+            <a class="navbar-brand " href="http://localhost:8080/index">Aloha123 Store</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a href="http://localhost:8080/index">
+                           <span class="fa-stack fa-lg" >
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-home fa-stack-1x"></i>
+                           </span>
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=18">IPhone</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=19">Samsung</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=21">Vinsmart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=20">Vivo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=24">Nokia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/admin/search-by-producer?search1=22">Oppo</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://twitter.com/NguyenKhacGiaB1">
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-square-o fa-stack-2x"></i>
+                               <i class="fa fa-twitter fa-stack-1x"></i>
+                           </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://www.facebook.com/nguyenkhacgia.bao">
+                           <span class="fa-stack fa-lg">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x"></i>
+                           </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.messenger.com/t/nguyenkhacgiabao">
+                           <span class="fa-stack fa-lg">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-comment fa-stack-1x"></i>
+                           </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="tel:+84963970901">
+                           <span class="fa-stack fa-lg">
+                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                <i class="fa fa-phone fa-spin fa-stack-1x"></i>
+                           </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#">
+                           <span class="fa-stack fa-lg">
+<!--                                <i class="fa fa-square-o fa-stack-2x"></i>-->
+                                <i class="fa fa-mobile fa-spin fa-stack-2x"></i>
+                           </span>
+                    </a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a nav-item href="https://www.messenger.com/t/nguyenkhacgiabao">
+                           <span class="fa-stack fa-md">
+                                <i class="fa fa-question-circle fa-2x"></i>
+                           </span>
+                </a>
+
+                    <span class=" dropdown">
+                        <a class="dropdown-toggle" href="localhost:8080/index"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user fa-2x"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="localhost:8080/admin">Login with admin</a>
+                            <a class="dropdown-item" href="localhost:8080/user">Login with user</a>
+                        </div>
+                    </span>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<section>
+    <div id="container-handle">
+        <nav id="menu-flex">
+            <ul>
+                <p>Điện thoại hot</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/31">IPhone 11 Pro max</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/130">IPhone 11 Pro</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/30">Samsung Galaxy A30S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/33">Samsung Galaxy Fold</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo Reno2 F</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/49">Oppo A9 2020</a> </li>
+
+                <p>IPhone</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/31">IPhone 11 Pro max</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/130">IPhone 11 Pro</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/57">IPhone XS Max</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/131">IPhone XS</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/45">IPhone 8 Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/132">IPhone 8</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/44">IPhone 7 Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/133">IPhone 7</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/134">IPhone 6S Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/43">IPhone 6S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/134">IPhone 6</a> </li>
+
+                <p>Samsung</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/33">Samsung Galaxy Fold</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/30">Samsung Galaxy A30S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/53">Samsung Galaxy A20S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/48">Samsung Galaxy A50S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy Note 10</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy Note A80</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy Note S10+</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy Note 9</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy S8 Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/35">Samsung Galaxy S10e</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/47">Samsung Galaxy A6+</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/47">Samsung Galaxy A7</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/30">Samsung Galaxy A50</a> </li>
+
+                <p>Vinsmart</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/36">Vsmart Live 6GB</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/135">Vsmart Active 1+</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/136">Vsmart Joy 2+</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/52">Vsmart Star</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/136">Vsmart BEE</a> </li>
+
+                <p>Oppo</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo Reno</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo Reno 2</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo Reno 2F</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/53">Oppo Reno F11 Pro</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/53">Oppo Reno F11</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/49">Oppo A9 2020</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/49">Oppo A5</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/49">Oppo A5S</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo A1k</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/34">Oppo Reno 3</a> </li>
+
+                <p>Vivo</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/37">Vivo S1 Pro</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/40">Vivo Y15</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/55">Vivo Y12</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/55">Vivo Y93</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/37">Vivo Y11</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/37">Vivo Y91C</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/40">Vivo V17</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/40">Vivo Nex 3</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/40">Vivo U10</a> </li>
+
+                <p>Nokia</p>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/56">Nokia 7.2</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/56">Nokia 8.1</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/56">Nokia 6.1 Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/39">Nokia 5.1 Plus</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/39">Nokia 2.3</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/51">Nokia 2.3</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/51">Nokia 3.2</a> </li>
+                <li><a href="http://localhost:8080/admin/detail-mobile-by-name/51">Nokia 800 Tough</a> </li>
+            </ul>
+        </nav>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left";>
+            <img src="https://bachlongmobile.com/media/catalog/product/cache/2/image/040ec09b1e35df139433887a97daa66f/1/_/1_55_2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/31" class="card text-center">IPhone 11 Pro Max</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://halomobile.vn/wp-content/uploads/2019/05/halomobile-iphone-11-den-min.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/130" class="card text-center">IPhone 11</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/3/13/636880897344731431_ss-galaxy-a50-xanh-1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/48" class="card text-center">Samsung Galaxy A50S</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/8/30/637027741626632925_ss-a30s-den-1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/30" class="card text-center">Samsung Galaxy A30s</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.tgdd.vn/Products/Images/42/209800/oppo-reno2-f-green-mtp-600x600.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/34" class="card text-center">Oppo Reno 2F</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/71d1g6F1h%2BL._SX679_.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/53" class="card text-center">Oppo A9 2020</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.vinpro.net/uploads/images/general/2019/10/01/vsmart-live-ocean-blue-rear-800x800.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/35" class="card text-center">Samsung Galaxy Note 10</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.vinpro.net/uploads/images/general/2019/10/01/vsmart-live-ocean-blue-rear-800x800.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/36" class="card text-center">Vsmart Live</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.vinpro.net/uploads/images/general/2019/10/01/vsmart-live-ocean-blue-rear-800x800.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/52" class="card text-center">Vsmart Bee</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://bachlongmobile.com/media/catalog/product/cache/2/image/040ec09b1e35df139433887a97daa66f/2/_/2_32_8.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/46" class="card text-center">IPhone X</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2018/11/2/636767481293188883_iphone-xs-gold-2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/57" class="card text-center">IPhone XS Gold</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://bachlongmobile.com/media/catalog/product/cache/2/image/040ec09b1e35df139433887a97daa66f/4/_/4_1_8.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/45" class="card text-center">IPhone 8 Plus</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://didongviet.vn/pub/media/catalog/product//i/p/iphone-8-plus-quoc-te-mau-trang-didongviet.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/129" class="card text-center">IPhone 8</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/1/21/636836615184176790_ip7-plus-den-1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/44" class="card text-center">IPhone 7 Plus</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.tgdd.vn/Products/Images/42/74110/iphone-7-gold-600x600.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/44" class="card text-center">IPhone 7</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81dOOs7xhLL._SX679_.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/56" class="card text-center">Nokia 8.1</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81dOOs7xhLL._SX679_.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/51" class="card text-center">Nokia 3.2</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81dOOs7xhLL._SX679_.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/50" class="card text-center">Nokia 2.3</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/10/17/637069295775370648_vivo-y11-xanh-3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/37" class="card text-center">Vivo Y11</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://cdn.fptshop.com.vn/Uploads/Originals/2019/10/25/637076227705922342_vivo-y19-den-1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/40" class="card text-center">Vivo Y19</a>
+            </div>
+        </div>
+
+        <div class="d-flex card m-4" style="width: 20rem; float: left">
+            <img src="https://bachlongmobile.com/media/catalog/product/cache/2/image/040ec09b1e35df139433887a97daa66f/3/_/3_5_1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="http://localhost:8080/admin/detail-mobile-by-name/55" class="card text-center">Vivo Y15</a>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/bootstrap.min.jss"></script>
+</body>
+</html>
+

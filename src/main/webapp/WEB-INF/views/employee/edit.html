@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="employee/layout :: head">
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+</head>
+<body>
+<h3>Update Employee</h3>
+<div th:id="form">
+<h2><a th:href="@{/admin/list-employee}">Back to List Employee</a></h2>
+<form th:action="@{/admin/update-employee}" method="post" th:object="${employees}">
+    <table th:id="employee">
+        <td><input type="hidden" th:field="*{employeeId}"></td>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{employeeName}"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{employeeEmail}"></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type="text" th:field="*{employeePhone}"></td>
+        </tr>
+        <tr>
+            <td>User:</td>
+            <td><input type="text" th:field="*{employeeUser}"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{employeePassword}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Update </span></button></td>
+        </tr>
+
+    </table>
+</form>
+</div>
+<footer th:replace="employee/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="customer/layout :: head">
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+</head>
+<body>
+<h3>Update Customer</h3>
+<div th:id="form">
+<h2><a th:href="@{/admin/list-customer}">Back to Customer List</a></h2>
+<form th:action="@{/admin/update-customer}" th:object="${customers}" method="post">
+    <input type="text" th:text="${customers.getCustomerId()}">
+    <table th:id="customer">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{customerName}"></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type="text" th:field="*{customerPhone}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{customerEmail}"></td>
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Update </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="customer/layout :: footer"></footer>
+</body>
+</html>

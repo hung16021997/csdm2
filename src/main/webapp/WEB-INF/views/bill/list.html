@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="bill/layout :: head">
+    <meta charset="UTF-8">
+    <title>Bill</title>
+</head>
+<body>
+<a href="/admin"> Back to home page</a>
+<h3>List Bill</h3>
+
+<h2><a href="/admin/create-bill">Create Bill</a></h2>
+<form th:action="@{/admin/search-by-employee}" onchange="this.submit()" >
+    <a>Tìm kiếm theo nhân viên</a>
+    <br/>
+    <select name="search" th:class="search">
+        <option value=-1></option>
+        <option th:each="employees :${employee}"
+                th:text="${employees.employeeName}"
+                th:value="${employees.employeeId}"
+                th:selected="(${employees.getEmployeeId()}==${search})"></option>
+    </select>
+</form>
+<br/>
+
+<table th:id="bill">
+    <tr>
+        <th>Number</th>
+<!--        <th>Date</th>-->
+        <th>Employee</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="bill : ${bills}">
+        <tr>
+            <td th:text="${bill.billNumber}"></td>
+<!--            <td th:text="${#dates.format(bill.billDate, 'dd-MM-yyyy')}"></td>-->
+            <td th:text="${bill.employee.employeeName}"></td>
+            <td><a th:href="@{/admin/edit-bill/__${bill.billId}__ }">Edit</a></td>
+            <td><a th:href="@{/admin/delete-bill/__${bill.billId}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/admin/list-bill'(page=${bills.number - 1})}" th:if="${bills.hasPrevious()}">Previous</a>
+    <span th:text="${bills.number + 1}"></span>/<span th:text="${bills.totalPages}"></span>
+    <a th:href="@{'/admin/list-bill'(page=${bills.number + 1})}" th:if="${bills.hasNext()}">Next</a>
+</div>
+<footer th:replace="bill/layout :: footer"></footer>
+</body>
+</html>

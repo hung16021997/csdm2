@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="bill/layout :: head">
+    <meta charset="UTF-8">
+    <title>Create Bill</title>
+</head>
+<body>
+<h3>Add Bill</h3>
+<div th:id="form">
+<p>
+    <a href="/admin/list-bill">Back to Bill List</a>
+</p>
+
+<form th:action="@{/admin/save-bill}" th:object="${bills}" method="post">
+    <table th:id="bill">
+        <tr>
+            <td>Number:</td>
+            <td><input type="text" th:field="*{billNumber}"/></td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td><input type="date" th:field="*{billDate}"/></td>
+        </tr>
+
+        <tr>
+            <td>Employee:</td>
+            <td>
+                <select th:field="*{employee}">
+                    <option th:each="p : ${employee}" th:value="${p.employeeId}" th:text="${p.employeeName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Add </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="bill/layout :: footer"></footer>
+</body>
+</html>

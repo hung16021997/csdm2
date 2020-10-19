@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head th:replace="mobileType/layout :: head">
+    <meta charset="UTF-8">
+    <title>Mobile Type</title>
+</head>
+<body>
+<a href="/admin">Back to homepage</a>
+<h3>Mobile Type</h3>
+<table th:id="mobileType">
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Status</td>
+        <td>Producer</td>
+        <td>Edit</td>
+        <td>Delete</td>
+    </tr>
+    <th:block th:each="mobileType:${mobileTypes}">
+        <tr>
+            <td th:text="${mobileType.mobileTypeName}"></td>
+            <td th:text="${mobileType.mobileTypeDescription}"></td>
+            <td th:text="${mobileType.mobileTypeStatus}"></td>
+            <td th:text="${mobileType.producer.producerName}"></td>
+            <td><a th:href="@{/admin/edit-mobileType/__${mobileType.mobileTypeId}__}">Edit</a></td>
+            <td><a th:href="@{/admin/delete-mobileType/__${mobileType.mobileTypeId}__}">Delete</a></td>
+        </tr>
+    </th:block>
+
+</table>
+<footer th:replace="mobileType/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="producer/layout :: head">
+    <meta charset="UTF-8">
+    <title>Producer List</title>
+</head>
+<body>
+    <a href="/admin">Back to home page</a>
+    <h3>Producer list</h3>
+    <a href="/admin/create-producer">Create Producer</a>
+
+<form method="get" th:action="@{/admin/list-producer-by-name}">
+    Tìm kiếm theo tên nhà sản xuất <br/>
+    <input name="search" type="text" th:class="select"/>
+    <button type="submit" class="button" style="vertical-align:middle"><span>Search </span></button>
+</form>
+
+<table th:id="producer">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <th:block th:each="producer : ${producers}">
+        <tr>
+            <td th:text="${producer.producerName}"></td>
+            <td><a th:href="@{/admin/edit-producer/__${producer.producerId}__}">Edit</a></td>
+            <td><a th:href="@{/admin/delete-producer/__${producer.producerId}__}">Delete</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
+
+

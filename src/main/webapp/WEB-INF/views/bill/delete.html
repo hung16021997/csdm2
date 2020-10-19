@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="bill/layout :: head">
+    <meta charset="UTF-8">
+    <title>Delete Bill</title>
+</head>
+<body>
+<h3>Remove Bill</h3>
+<div th:id="form">
+<h2><a href="/admin/list-bill">Back to List Bill</a></h2>
+<h2>Are your sure?</h2>
+<form th:object="${bills}" th:action="@{/admin/remove-bill}" method="post">
+    <table th:id="bill">
+        <tr>
+            <td><input type="hidden" th:field="*{billId}"></td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td><a th:text="${bills.getBillNumber()}"></a></td>
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Remove </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="bill/layout :: footer"></footer>
+</body>
+</html>

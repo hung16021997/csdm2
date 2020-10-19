@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="producer/layout :: head"></head>
+<body>
+<h3>Add Producer</h3>
+<p>
+    <a th:href="@{/}">
+        Back to homepage
+    </a>
+    <a th:href="@{/admin/list-producer}">
+        Back to producer
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/admin/save-producer}" th:object="${producers}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{producerId}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{producerName}" th:class="select"/>
+        </div>
+        <button  type="submit" class="button" style="vertical-align:middle"><span>Create </span></button>
+    </form>
+</div>
+<footer th:replace="producer/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="customer/layout :: head">
+
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+</head>
+<body>
+<a href="/admin">Back to home page</a>
+
+<h3>Customer List</h3>
+<p>
+    <a href="/admin/create-customer">Create Customer</a>
+</p>
+
+<form method="get" th:action="@{/admin/list-customer-by-name}">
+    Tìm kiếm theo tên khách hàng: <br/>
+    <input name="search" type="text"/>
+    <button type="submit" class="button" style="vertical-align:middle"><span> Search </span></button>
+</form>
+
+<table th:id="customer">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="customer : ${customers}">
+        <tr>
+            <td th:text="${customer.customerName}"></td>
+            <td th:text="${customer.customerPhone}"></td>
+            <td th:text="${customer.customerEmail}"></td>
+            <td><a th:href="@{/admin/edit-customer/__${customer.customerId}__}">Edit</a></td>
+            <td><a th:href="@{/admin/delete-customer/__${customer.customerId}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<footer th:replace="customer/layout :: footer"></footer>
+</body>
+</html>

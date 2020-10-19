@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mobile/layout :: head">
+    <meta charset="UTF-8">
+    <title>Mobile</title>
+</head>
+<body>
+<h2 th:text="${'View counter:' + MyCounter.getCount()}"></h2>
+<a href="/admin"> Back to Home</a>
+<h3>Mobile List</h3>
+<h2><a href="/admin/create-mobile">Create Mobile</a></h2>
+<form th:action="@{/admin/search-by-mobileType}" onchange="this.submit()" >
+    <a>Tìm kiếm theo loại điện thoại</a>
+    <br/>
+    <select name="search" th:class="search">
+        <option value=-1></option>
+        <option th:each="mobileTypes :${mobileType}"
+                th:text="${mobileTypes.mobileTypeName}"
+                th:value="${mobileTypes.mobileTypeId}"
+                th:selected="(${mobileTypes.getMobileTypeId()}==${search})"></option>
+    </select>
+
+</form>
+
+<form th:action="@{/admin/search-by-producer}" onchange="this.submit()" >
+    <a>Tìm kiếm theo nhà sản xuất</a>
+    <br/>
+    <select name="search1" th:class="search">
+        <option value=-1></option>
+        <option th:each="producers :${producer}"
+                th:text="${producers.producerName}"
+                th:value="${producers.producerId}"
+                th:selected="(${producers.getProducerId()}==${search})"></option>
+    </select>
+</form>
+<br/>
+
+<form method="get" th:action="@{/admin/list-mobile-by-name}">
+    Tìm kiếm theo tên điện thoại: <br/>
+    <input name="search11" type="text"/>
+    <button type="submit" class="button" style="vertical-align:middle"><span>Search </span></button>
+</form>
+
+<form method="get" th:action="@{/admin/list-mobile-by-description}">
+    Tìm kiếm theo mô tả điện thoại: <br/>
+    <input name="search22" type="text"/>
+    <button type="submit" class="button" style="vertical-align:middle"><span>Search </span></button>
+</form>
+
+    <a>Sort by: </a>
+    <a th:href="@{/admin/sort-by-price}">Price</a>
+    <a th:href="@{/admin/sort-by-producer}">Producer</a>
+
+<table th:id="mobile">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>Producer</th>
+<!--        <th>Bill Detail</th>-->
+        <th>Mobile Type</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    <th:block th:each="mobile : ${mobiles}">
+        <tr>
+            <td th:text="${mobile.mobileName}"></td>
+            <td th:text="${#numbers.formatDecimal(mobile.getMobilePrice(),0,'POINT',0,'COMMA')}"></td>
+            <td th:text="${mobile.mobileDescription}"></td>
+            <td th:text="${mobile.mobileType.mobileTypeStatus}"></td>
+            <td><img th:src="${mobile.getMobileImage()}" style="height: 140px; width: 140px"></td>
+            <td th:text="${mobile.producer.producerName}"></td>
+            <td th:text="${mobile.mobileType.getMobileTypeName()}"></td>
+            <td><a th:href="@{/admin/edit-mobile/__${mobile.getMobileId()}__ }">Edit</a></td>
+            <td><a th:href="@{/admin/delete-mobile/__${mobile.getMobileId()}__ }">Delete</a></td>
+            <td><a th:href="@{/admin/detail-mobile-by-name/__${mobile.getMobileId()}__ }">View</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/admin/list-mobile-by-name'(page=${mobiles.number - 1})}" th:if="${mobiles.hasPrevious()}">Previous</a>
+    <span th:text="${mobiles.number + 1}"></span>/<span th:text="${mobiles.totalPages}"></span>
+    <a th:href="@{'/admin/list-mobile-by-name'(page=${mobiles.number + 1})}" th:if="${mobiles.hasNext()}">Next</a>
+</div>
+<footer th:replace="mobile/layout :: footer"></footer>
+</body>
+</html>

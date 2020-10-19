@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="billDetail/layout :: head">
+    <meta charset="UTF-8">
+    <title>Bill Detail</title>
+</head>
+<body>
+<a href="/admin"> Back to Homepage</a>
+<h3>List Bill Detail</h3>
+<h2><a href="/admin/create-billDetail">Create Bill Detail</a></h2>
+<form th:action="@{/admin/search-by-customer}" onchange="this.submit()" >
+    <a>Search by customer</a>
+    <select name="search" th:class="select">
+        <option value=-1></option>
+        <option th:each="customers :${customer}"
+                th:text="${customers.customerName}"
+                th:value="${customers.customerId}"
+                th:selected="(${customers.getCustomerId()}==${search})"></option>
+    </select>
+    <br/>
+    <a>Sort by: </a>
+    <a th:href="@{/admin/sort-by-total-price}">Price</a>
+    <a th:href="@{/admin/sort-by-date}">Date</a>
+<br/>
+<table th:id="billDetail">
+    <tr>
+        <th>Customer</th>
+        <th>Quantity</th>
+        <th>Price Each</th>
+        <th>Total Price</th>
+        <th>Date</th>
+        <th>Bill Number</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="billDetail : ${billDetails}">
+        <tr>
+            <td th:text="${billDetail.customer.getCustomerName()}"></td>
+            <td th:text="${billDetail.mobileNumber}"></td>
+            <td th:text="${#numbers.formatDecimal(billDetail.getPriceEach(),0,'POINT',0,'COMMA')}"></td>
+            <td th:text="${#numbers.formatDecimal(billDetail.getTotalPrice(),0,'POINT',0,'COMMA')}"></td>
+            <td th:text="${#dates.format(billDetail.billDetailDate, 'dd-MM-yyyy')}"></td>
+            <td th:text="${billDetail.bill.getBillNumber()}"></td>
+            <td th:text="${billDetail.bill.billStatus}"></td>
+            <td><a th:href="@{/admin/edit-billDetail/__${billDetail.getBillDetailId()}__ }">Edit</a></td>
+            <td><a th:href="@{/admin/delete-billDetail/__${billDetail.getBillDetailId()}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<footer th:replace="bill/layout :: footer"></footer>
+</body>
+</html>

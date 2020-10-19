@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mobileType/layout :: head">
+    <meta charset="UTF-8">
+    <title>Create Mobile Type</title>
+</head>
+<body>
+<h3>Add Mobile Type</h3>
+<div th:id="form">
+<h2><a th:href="@{/admin/list-mobileType}">Back to MobileType List</a></h2>
+<form th:action="@{/admin/save-mobileType}" th:object="${mobileTypes}" method="post">
+    <table th:id="mobileType">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{mobileTypeName}"></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" th:field="*{mobileTypeDescription}"></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <input type="radio" th:field="*{mobileTypeStatus}" th:value="true" />
+                <label th:text="stocking" />
+                <input type="radio" th:field="*{mobileTypeStatus}" th:value="false" />
+                <label th:text="out_of_stock" />
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>Producer:</td>
+            <td>
+                <select th:field="*{producer}" th:class="select">
+                    <option th:each="p : ${producer}" th:value="${p.getProducerId()}" th:text="${p.producerName}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Create </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="mobileType/layout :: footer"></footer>
+</body>
+</html>

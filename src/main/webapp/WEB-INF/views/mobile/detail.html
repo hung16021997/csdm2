@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mobile/layout :: head">
+    <meta charset="UTF-8">
+    <title>View Mobile</title>
+</head>
+<body>
+<h1>Mobile Detail</h1>
+<p>
+    <a href="/admin/list-mobile-by-name">Mobile list</a>
+</p>
+<div th:id="form">
+    <form th:object="${mobiles}" method="get">
+        <input th:type="hidden" name="id" th:field="*{mobileId}">
+        <table th:id="mobile">
+            <tr>
+                <td>Name:</td>
+                <td th:text="*{mobileName}"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td th:text="*{mobilePrice}"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td th:text="*{mobileDescription}"></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td th:text="*{mobileStatus}"></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><img th:src="${mobiles.getMobileImage()}" style="height: 140px; width: 140px"></td>
+            </tr>
+            <tr>
+                <td>Producer</td>
+                <td th:text="${mobiles.producer.getProducerName()}"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<footer th:replace="mobile/layout :: footer"></footer>
+</body>
+</html>

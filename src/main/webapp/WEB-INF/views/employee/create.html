@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="employee/layout :: head">
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<body>
+<h3>Add Employee</h3>
+<div th:id="form">
+<h2><a th:href="@{/admin/list-employee}">Back to Employee List</a></h2>
+<form th:action="@{/admin/save-employee}" th:object="${employees}" method="post">
+    <table th:id="employee">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{employeeName}"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" th:field="*{employeeEmail}"></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><input type="text" th:field="*{employeePhone}"></td>
+        </tr>
+        <tr>
+            <td>User:</td>
+            <td><input type="text" th:field="*{employeeUser}"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{employeePassword}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Add </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="employee/layout :: footer"></footer>
+</body>
+</html>

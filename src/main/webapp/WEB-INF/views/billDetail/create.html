@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="billDetail/layout :: head">
+    <meta charset="UTF-8">
+    <title>Create Bill Detail</title>
+</head>
+<body>
+<h3>Add Bill Detail</h3>
+<div th:id="form">
+<p>
+    <a href="/admin/list-billDetail">Back to Bill Detail</a>
+</p>
+
+<form th:action="@{/admin/save-billDetail}" th:object="${billDetails}" method="post">
+    <input type="hidden" th:field="*{billDetailId}">
+    <table th:id="billDetail">
+
+        <tr>
+            <td>Quantity:</td>
+            <td>
+                <input type="number" th:field="*{mobileNumber}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Price Each:</td>
+            <td>
+                <input type="text" th:field="*{priceEach}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Date:</td>
+            <td>
+                <input type="date" th:field="*{billDetailDate}"/>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Customer:</td>
+            <td>
+                <select th:field="*{customer}" th:class="select">
+                    <option th:each="p : ${customer}" th:value="${p.customerId}" th:text="${p.customerName}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Bill:</td>
+            <td>
+                <select th:field="*{bill}" th:class="select">
+                    <option th:each="p : ${bill}" th:value="${p.billId}" th:text="${p.billNumber}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Payment:</td>
+            <td>
+                <select th:field="*{payment}" th:class="select">
+                    <option th:each="p : ${payment}" th:value="${p.paymentId}" th:text="${p.paymentCode}"></option>
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Add </span></button></td>
+        </tr>
+
+    </table>
+</form>
+</div>
+<footer th:replace="billDetail/layout :: footer"></footer>
+</body>
+</html>

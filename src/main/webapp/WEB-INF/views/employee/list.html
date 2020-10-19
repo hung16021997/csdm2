@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="employee/layout :: head">
+    <meta charset="UTF-8">
+    <title>Employee list</title>
+</head>
+<body>
+<a href="/admin">Back to home page</a>
+<h3>List Employee</h3>
+
+<p>
+    <a href="/admin/create-employee">Create new Employee</a>
+</p>
+
+<form method="get" th:action="@{/admin/list-employee-by-name}">
+    Tìm kiếm theo tên nhân viên: <br/>
+    <input name="search" type="text"/>
+    <button type="submit" class="button" style="vertical-align:middle"><span>Search </span></button>
+</form>
+
+<table th:id="employee">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>User</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="employee : ${employees}">
+        <tr>
+            <td th:text="${employee.employeeName}"></td>
+            <td th:text="${employee.employeePhone}"></td>
+            <td th:text="${employee.employeeEmail}"></td>
+            <td th:text="${employee.employeeUser}"></td>
+            <td th:text="${employee.employeePassword}"></td>
+            <td><a th:href="@{/admin/edit-employee/__${employee.employeeId}__}">Edit</a></td>
+            <td><a th:href="@{/admin/delete-employee/__${employee.employeeId}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<footer th:replace="employee/layout :: footer"></footer>
+</body>
+</html>

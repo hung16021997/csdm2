@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Layout Payment</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.254em;
+            margin: 0;
+            padding:0px;
+        }
+
+        #container-handle {
+            position: relative;
+            padding-left: 0px;
+            left: 15px;
+            width: 100%;
+        }
+        #menu-flex ul {
+            background: #8AD385;
+            width: 20%;
+            padding: 0;
+            list-style-type: none;
+            text-align: left;
+            float: left;
+        }
+
+        #menu-flex li {
+            width: auto;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 1em;
+        }
+
+        #menu-flex li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+        }
+        #menu-flex li:hover {
+            background: #CDE2CD;
+        }
+
+        p {
+            width: auto;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 30px;
+            font-size: 30px;
+            font-family: "Times New Roman";
+            color: #1e20ff;
+
+        }
+
+
+        #image-container {
+            position: absolute;
+            top: 10px;
+            left: 250px;
+            margin: 10px;
+            padding: 10px;
+            float: left;
+
+        }
+
+        .image-1 {
+            float: left;
+            width: 25%;
+            padding: 35px;
+        }
+
+    </style>
+</head>
+<body>
+
+<footer th:fragment="footer">
+    &copy; NBTD
+</footer>
+</body>
+</html>

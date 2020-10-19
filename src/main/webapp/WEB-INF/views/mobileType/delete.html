@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mobileType/layout :: head">
+    <meta charset="UTF-8">
+    <title>Delete Mobile Type</title>
+</head>
+<body>
+<h3>Delete Mobile Type</h3>
+<div th:id="form">
+<h2><a href="/admin/list-mobileType">Back to List Mobile Type</a></h2>
+<form th:object="${mobileTypes}" th:action="@{/admin/remove-mobileType}" method="post">
+    <table th:id="mobileType">
+        <tr>
+            <td><input type="hidden" th:field="*{mobileTypeId}"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><a th:text="${mobileTypes.getMobileTypeName()}"></a></td>
+        </tr>
+
+        <tr>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Delete </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="mobileType/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mobile/layout :: head">
+    <meta charset="UTF-8">
+    <title>Edit Mobile</title>
+</head>
+<body>
+<h3>Edit Mobile</h3>
+<p>
+    <a href="/admin/list-mobile-by-name">Back to Mobile List</a>
+</p>
+<div th:id="form">
+<form th:action="@{/admin/update-mobile}" th:object="${mobiles}" method="post">
+    <td><input type="hidden" th:field="*{mobileId}"></td>
+    <table th:id="mobile">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{mobileName}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{mobilePrice}"/></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" th:field="*{mobileDescription}"/></td>
+        </tr>
+        <tr>
+            <td>Image:</td>
+            <td><input type="text" th:field="*{mobileImage}"/></td>
+        </tr>
+
+
+        <tr>
+            <td>Producer:</td>
+            <td>
+                <select th:field="*{producer}" th:class="select">
+                    <option th:each="p : ${producer}" th:value="${p.producerId}" th:text="${p.producerName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Mobile Type:</td>
+            <td>
+                <select th:field="*{mobileType}" th:class="select">
+                    <option th:each="p : ${mobileType}" th:value="${p.mobileTypeId}" th:text="${p.mobileTypeName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="button" style="vertical-align:middle"><span>Edit </span></button></td>
+        </tr>
+    </table>
+</form>
+</div>
+<footer th:replace="mobile/layout :: footer"></footer>
+</body>
+</html>
